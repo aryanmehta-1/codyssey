@@ -1,0 +1,333 @@
+/**
+ * Micro-learning lessons. Each lesson is short, self-contained,
+ * and worth XP_REWARDS.LESSON_COMPLETE when marked complete.
+ */
+export const lessons = [
+  // ---------------- HTML ----------------
+  {
+    id: 'html-1',
+    skillId: 'html',
+    title: 'Structure & Semantic Tags',
+    xp: 20,
+    summary: 'Build meaningful page structure with semantic elements.',
+    content: [
+      'HTML gives a page structure using semantic tags — elements whose names describe their purpose, not just their appearance.',
+      'Tags like <header>, <nav>, <main>, <section> and <footer> tell the browser (and screen readers) what each part of the page is for.',
+    ],
+    code: `<header>\n  <h1>Codyssey</h1>\n</header>\n<main>\n  <section>\n    <h2>Welcome</h2>\n  </section>\n</main>`,
+    topics: ['semantic elements', 'document structure', 'accessibility basics'],
+  },
+  {
+    id: 'html-2',
+    skillId: 'html',
+    title: 'Forms & Inputs',
+    xp: 20,
+    summary: 'Collect user data with forms, inputs, and labels.',
+    content: [
+      'Forms let users send data. Every input should be paired with a <label> so it is accessible and clickable.',
+      'Attributes like required, type and placeholder shape how the browser validates and displays a field.',
+    ],
+    code: `<form>\n  <label for="email">Email</label>\n  <input id="email" type="email" required />\n  <button type="submit">Send</button>\n</form>`,
+    topics: ['forms', 'labels', 'input types'],
+  },
+  {
+    id: 'html-3',
+    skillId: 'html',
+    title: 'The Box Model',
+    xp: 20,
+    summary: 'Understand content, padding, border, and margin.',
+    content: [
+      'Every HTML element is a box. The box model describes how content, padding, border and margin stack to determine its total size.',
+      'box-sizing: border-box is commonly used so padding and border are included inside the declared width.',
+    ],
+    code: `.card {\n  box-sizing: border-box;\n  padding: 16px;\n  border: 1px solid #ccc;\n}`,
+    topics: ['box model', 'CSS3 fundamentals'],
+  },
+  {
+    id: 'html-4',
+    skillId: 'html',
+    title: 'Responsive Layouts',
+    xp: 20,
+    summary: 'Design pages that adapt to any screen size.',
+    content: [
+      'Responsive design means a layout reflows naturally across phones, tablets and desktops.',
+      'Media queries let CSS apply different rules depending on the viewport width — the foundation of mobile-first design.',
+    ],
+    code: `@media (max-width: 640px) {\n  .grid { grid-template-columns: 1fr; }\n}`,
+    topics: ['responsive design', 'media queries', 'mobile-first'],
+  },
+  {
+    id: 'html-5',
+    skillId: 'html',
+    title: 'Flexbox & Grid Basics',
+    xp: 20,
+    summary: 'Arrange elements with modern layout systems.',
+    content: [
+      'Flexbox arranges items along a single row or column — ideal for navbars and cards.',
+      'CSS Grid arranges items in two dimensions at once — ideal for whole-page layouts like a dashboard.',
+    ],
+    code: `.row { display: flex; gap: 12px; }\n.dashboard { display: grid; grid-template-columns: 240px 1fr; }`,
+    topics: ['Flexbox', 'Grid', 'layout'],
+  },
+
+  // ---------------- CSS ----------------
+  {
+    id: 'css-1',
+    skillId: 'css',
+    title: 'Selectors & Specificity',
+    xp: 20,
+    summary: 'Target exactly the elements you mean to style.',
+    content: [
+      'CSS selectors decide which elements a rule applies to — element, class, id, and combinators like descendant or child selectors.',
+      'Specificity decides which rule wins when two selectors target the same element: inline > id > class > element.',
+    ],
+    code: `.card--active { border-color: var(--primary); }`,
+    topics: ['selectors', 'specificity'],
+  },
+  {
+    id: 'css-2',
+    skillId: 'css',
+    title: 'CSS Variables',
+    xp: 20,
+    summary: 'Define reusable design tokens with custom properties.',
+    content: [
+      'CSS custom properties (variables) store a value once and reuse it everywhere, making themes and design systems easy to maintain.',
+      'They are declared with -- and read with var().',
+    ],
+    code: `:root { --primary: #5b6ef5; }\n.btn { background: var(--primary); }`,
+    topics: ['CSS variables', 'design tokens'],
+  },
+  {
+    id: 'css-3',
+    skillId: 'css',
+    title: 'Transitions & Animations',
+    xp: 20,
+    summary: 'Add smooth, purposeful motion to your UI.',
+    content: [
+      'transition animates a property change smoothly over time — great for hover states.',
+      '@keyframes define multi-step animations that can loop, like the floating stars in the Codeverse background.',
+    ],
+    code: `.node { transition: transform 0.2s ease; }\n.node:hover { transform: scale(1.05); }`,
+    topics: ['transitions', 'animations', 'keyframes'],
+  },
+  {
+    id: 'css-4',
+    skillId: 'css',
+    title: 'Flexbox Deep Dive',
+    xp: 20,
+    summary: 'Master alignment, wrapping, and flexible sizing.',
+    content: [
+      'justify-content aligns items along the main axis; align-items aligns them along the cross axis.',
+      'flex-wrap lets items move to a new line instead of shrinking indefinitely on small screens.',
+    ],
+    code: `.nav { display: flex; justify-content: space-between; align-items: center; }`,
+    topics: ['Flexbox', 'alignment'],
+  },
+  {
+    id: 'css-5',
+    skillId: 'css',
+    title: 'Responsive Grid Systems',
+    xp: 20,
+    summary: 'Build layouts that reflow across breakpoints.',
+    content: [
+      'CSS Grid with repeat() and minmax() creates layouts that automatically add or remove columns based on available space.',
+      'Combined with media queries, grid becomes the backbone of a responsive dashboard.',
+    ],
+    code: `.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }`,
+    topics: ['Grid', 'responsive design'],
+  },
+
+  // ---------------- JavaScript ----------------
+  {
+    id: 'js-1',
+    skillId: 'javascript',
+    title: 'Variables & Data Types',
+    xp: 20,
+    summary: 'Store and label data with let, const, and var.',
+    content: [
+      'const declares a variable that cannot be reassigned; let declares one that can. Prefer const by default.',
+      'JavaScript has primitive types (string, number, boolean, null, undefined) and reference types like objects and arrays.',
+    ],
+    code: `const xp = 820;\nlet streak = 6;\nstreak += 1;`,
+    topics: ['variables', 'let/const', 'data types'],
+  },
+  {
+    id: 'js-2',
+    skillId: 'javascript',
+    title: 'Functions & Arrow Functions',
+    xp: 20,
+    summary: 'Package logic into reusable, callable blocks.',
+    content: [
+      'Functions group logic so it can be reused. Arrow functions are a shorter syntax that also does not rebind "this".',
+      'Functions can take parameters and return a value back to the caller.',
+    ],
+    code: `const addXP = (current, amount) => current + amount;\naddXP(820, 50); // 870`,
+    topics: ['functions', 'arrow functions'],
+  },
+  {
+    id: 'js-3',
+    skillId: 'javascript',
+    title: 'Arrays & Array Methods',
+    xp: 20,
+    summary: 'Store lists of values and transform them.',
+    content: [
+      'An array stores multiple values in a single variable, accessed by index starting at 0.',
+      'Methods like map(), filter() and find() transform arrays without writing manual loops — this is how Codyssey renders quest and lesson lists.',
+    ],
+    code: `const skills = ["HTML", "CSS", "JavaScript"];\nconst upper = skills.map(s => s.toUpperCase());`,
+    topics: ['arrays', 'map/filter/find'],
+  },
+  {
+    id: 'js-4',
+    skillId: 'javascript',
+    title: 'Objects & Destructuring',
+    xp: 20,
+    summary: 'Model structured data and unpack it cleanly.',
+    content: [
+      'Objects store key-value pairs, useful for modeling things like a quest { id, title, xp, status }.',
+      'Destructuring pulls specific fields out of an object or array into their own variables.',
+    ],
+    code: `const quest = { title: "Array Master", xp: 50 };\nconst { title, xp } = quest;`,
+    topics: ['objects', 'destructuring'],
+  },
+  {
+    id: 'js-5',
+    skillId: 'javascript',
+    title: 'Spread & Rest Operators',
+    xp: 20,
+    summary: 'Copy, merge, and collect values with ...',
+    content: [
+      'The spread operator (...) expands an array or object — useful for copying state immutably before updating it.',
+      'The rest operator collects remaining arguments into a single array inside a function.',
+    ],
+    code: `const updated = { ...quest, status: "completed" };`,
+    topics: ['spread', 'rest', 'immutability'],
+  },
+  {
+    id: 'js-6',
+    skillId: 'javascript',
+    title: 'Events & the DOM',
+    xp: 20,
+    summary: 'Respond to clicks, input, and user interaction.',
+    content: [
+      'The DOM is the browser\'s live representation of the page. Event listeners run code in response to user actions like clicks.',
+      'In React, event handling is expressed declaratively through props like onClick instead of addEventListener.',
+    ],
+    code: `button.addEventListener("click", () => console.log("Quest started"));`,
+    topics: ['DOM', 'events'],
+  },
+  {
+    id: 'js-7',
+    skillId: 'javascript',
+    title: 'Browser Storage',
+    xp: 20,
+    summary: 'Persist data across page refreshes with localStorage.',
+    content: [
+      'localStorage stores string key-value pairs in the browser that survive a page refresh — this is how Codyssey remembers XP and progress.',
+      'Objects must be serialized with JSON.stringify() before storing and parsed back with JSON.parse().',
+    ],
+    code: `localStorage.setItem("xp", JSON.stringify(870));\nconst xp = JSON.parse(localStorage.getItem("xp"));`,
+    topics: ['localStorage', 'JSON'],
+  },
+  {
+    id: 'js-8',
+    skillId: 'javascript',
+    title: 'Promises & Async/Await',
+    xp: 20,
+    summary: 'Handle operations that take time without blocking.',
+    content: [
+      'A Promise represents a value that will be available later — like data loading from a server.',
+      'async/await is syntax sugar over promises that lets asynchronous code read like synchronous code.',
+    ],
+    code: `async function loadQuests() {\n  const data = await fetchQuests();\n  return data;\n}`,
+    topics: ['Promises', 'async/await'],
+  },
+
+  // ---------------- React ----------------
+  {
+    id: 'react-1',
+    skillId: 'react',
+    title: 'Components & JSX',
+    xp: 25,
+    summary: 'Describe UI declaratively with JSX.',
+    content: [
+      'A React component is a JavaScript function that returns JSX — a syntax that looks like HTML but compiles to JavaScript.',
+      'Components let you break a UI into small, independent, reusable pieces like Button or QuestCard.',
+    ],
+    code: `function QuestCard({ title }) {\n  return <div className="card">{title}</div>;\n}`,
+    topics: ['JSX', 'components'],
+  },
+  {
+    id: 'react-2',
+    skillId: 'react',
+    title: 'Props & Composition',
+    xp: 25,
+    summary: 'Pass data down and compose components together.',
+    content: [
+      'Props are read-only inputs passed from a parent component to a child, similar to function arguments.',
+      'Composition means building complex UI by combining small components — a Dashboard is composed of ProgressCard, TodayPlan, and SkillOverview.',
+    ],
+    code: `<QuestCard title="Array Master" xp={50} />`,
+    topics: ['props', 'composition'],
+  },
+  {
+    id: 'react-3',
+    skillId: 'react',
+    title: 'State with useState',
+    xp: 25,
+    summary: 'Give components memory that persists between renders.',
+    content: [
+      'useState returns a value and a setter function. Calling the setter triggers React to re-render the component with the new value.',
+      'State should live in the component (or Context) that owns the data, and flow down through props.',
+    ],
+    code: `const [xp, setXP] = useState(820);\nsetXP(xp + 50);`,
+    topics: ['useState', 'state'],
+  },
+  {
+    id: 'react-4',
+    skillId: 'react',
+    title: 'Effects with useEffect',
+    xp: 25,
+    summary: 'Synchronize a component with an external system.',
+    content: [
+      'useEffect runs code after render — commonly used to sync state to localStorage or fetch data when a component mounts.',
+      'A dependency array controls when the effect re-runs, preventing unnecessary work.',
+    ],
+    code: `useEffect(() => {\n  localStorage.setItem("xp", JSON.stringify(xp));\n}, [xp]);`,
+    topics: ['useEffect', 'side effects'],
+  },
+  {
+    id: 'react-5',
+    skillId: 'react',
+    title: 'Lists, Conditionals & Custom Hooks',
+    xp: 25,
+    summary: 'Render dynamic data and extract reusable logic.',
+    content: [
+      'Array.map() renders a list of components from data — each item needs a stable key prop.',
+      'A custom hook is just a function starting with "use" that packages reusable stateful logic, like useLocalStorage or useProgress.',
+    ],
+    code: `{quests.map(q => <QuestCard key={q.id} {...q} />)}`,
+    topics: ['list rendering', 'conditional rendering', 'custom hooks'],
+  },
+  {
+    id: 'react-6',
+    skillId: 'react',
+    title: 'React Router Basics',
+    xp: 25,
+    summary: 'Navigate between pages in a single-page app.',
+    content: [
+      'React Router maps URL paths to components, letting a single-page app feel like it has multiple pages.',
+      'Protected routes check authentication state and redirect to Sign In if the user is not logged in.',
+    ],
+    code: `<Route path="/dashboard" element={<Dashboard />} />`,
+    topics: ['React Router', 'protected routes'],
+  },
+];
+
+export function getLessonById(id) {
+  return lessons.find((l) => l.id === id);
+}
+
+export function getLessonsForSkill(skillId) {
+  return lessons.filter((l) => l.skillId === skillId);
+}

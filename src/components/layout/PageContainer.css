@@ -1,0 +1,10 @@
+.app-shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  min-height: 100vh;
+}
+.page-container {
+  padding: 32px 40px 64px;
+  max-width: 1180px;
+  width: 100%;
+}

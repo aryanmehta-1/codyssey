@@ -1,0 +1,19 @@
+.badge-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+.badge-chip--default { background: var(--surface-hover); color: var(--text-secondary); }
+.badge-chip--primary { background: rgba(91, 110, 245, 0.16); color: #a3b0ff; }
+.badge-chip--success { background: rgba(52, 211, 153, 0.16); color: var(--success); }
+.badge-chip--xp { background: rgba(251, 191, 36, 0.16); color: var(--xp); }
+.badge-chip--streak { background: rgba(251, 122, 60, 0.16); color: var(--streak); }
+.badge-chip--locked { background: rgba(74, 81, 112, 0.25); color: var(--locked); }
+.badge-chip--danger { background: rgba(244, 63, 94, 0.16); color: var(--danger); }

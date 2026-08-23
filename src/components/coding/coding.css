@@ -1,0 +1,17 @@
+.code-editor {
+  background: #060911;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: #b7c3ff;
+  white-space: pre;
+  overflow-x: auto;
+}
+.code-editor__topbar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.code-editor__dot { width: 10px; height: 10px; border-radius: 50%; }

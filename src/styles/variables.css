@@ -1,0 +1,67 @@
+:root {
+  /* Backgrounds */
+  --bg-primary: #05070f;
+  --bg-secondary: #0b0f1e;
+  --surface: #121a30;
+  --surface-hover: #1b2544;
+  --surface-alt: #0e1426;
+  --surface-glass: rgba(19, 26, 48, 0.6);
+
+  /* Brand */
+  --primary: #6366f1;
+  --primary-dim: #4145a8;
+  --secondary: #c026d3;
+  --secondary-dim: #86189a;
+  --accent: #22d3ee;
+  --accent-dim: #158fa8;
+
+  /* Semantic */
+  --success: #2dd4a7;
+  --warning: #fbbf24;
+  --danger: #fb4570;
+  --xp: #ffc23c;
+  --streak: #ff7a45;
+  --locked: #4a5170;
+
+  /* Text */
+  --text-primary: #f5f6fc;
+  --text-secondary: #9ea6c9;
+  --text-muted: #656d92;
+
+  /* Borders / shadows */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --shadow: 0 10px 34px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.55);
+  --shadow-glow-primary: 0 0 28px rgba(99, 102, 241, 0.4);
+  --shadow-glow-secondary: 0 0 28px rgba(192, 38, 211, 0.4);
+  --shadow-glow-accent: 0 0 28px rgba(34, 211, 238, 0.4);
+  --shadow-glow-xp: 0 0 22px rgba(255, 194, 60, 0.4);
+
+  /* Signature gradients */
+  --gradient-brand: linear-gradient(135deg, var(--primary), var(--secondary));
+  --gradient-brand-3: linear-gradient(135deg, var(--primary), var(--secondary) 55%, var(--accent));
+  --gradient-xp: linear-gradient(90deg, var(--xp), #ff9d4d);
+  --gradient-streak: linear-gradient(90deg, var(--streak), #ff4d6d);
+  --gradient-mesh:
+    radial-gradient(ellipse 700px 500px at 8% -10%, rgba(99, 102, 241, 0.28), transparent 60%),
+    radial-gradient(ellipse 600px 500px at 95% 10%, rgba(192, 38, 211, 0.22), transparent 55%),
+    radial-gradient(ellipse 700px 600px at 50% 120%, rgba(34, 211, 238, 0.14), transparent 60%);
+
+  /* Type */
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Layout */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --sidebar-width: 244px;
+  --content-max: 1200px;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}

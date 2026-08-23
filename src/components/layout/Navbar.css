@@ -1,0 +1,36 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 24px;
+  flex-wrap: wrap;
+}
+.navbar-title {
+  font-size: 24px;
+}
+.navbar-stats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.navbar-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.navbar-stat--streak { color: var(--streak); }
+.navbar-stat--xp { color: var(--xp); }
+.navbar-stat--level { color: var(--primary); }
+
+.navbar-stat--streak-lit {
+  animation: pulse-glow 2.2s ease-in-out infinite;
+  border-color: rgba(255, 122, 69, 0.4);
+}

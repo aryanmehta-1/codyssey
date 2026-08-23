@@ -1,0 +1,6 @@
+.quest-card { display: flex; flex-direction: column; gap: 12px; }
+.quest-card__top { display: flex; align-items: center; justify-content: space-between; }
+.quest-card__type { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--secondary); font-weight: 700; }
+.quest-card__title { font-size: 16px; margin: 2px 0 6px; }
+.quest-card__stars { color: var(--xp); letter-spacing: 2px; }
+.quest-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
