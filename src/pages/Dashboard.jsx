@@ -133,7 +133,7 @@ export default function Dashboard() {
       </div>
 
       {/* ── Modals driven by context state ───────────────────────────────── */}
-      <LevelUpModal level={lastLevelUp} onClose={clearLevelUpToast} />
+      <LevelUpModal level={lastLevelUp} currentXP={student.xp} onClose={clearLevelUpToast} />
       <AchievementModal badge={lastUnlockedBadge} onClose={clearBadgeToast} />
     </PageContainer>
   );

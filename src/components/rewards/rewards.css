@@ -1,14 +1,102 @@
+/* ── Achievement / Badge modal ─────────────────────────────────────────────── */
 .achievement-modal { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
 .achievement-modal__label { font-size: 12px; letter-spacing: 0.1em; color: #9ea6c9; text-transform: uppercase; }
-.achievement-modal__trophy { font-size: 54px; margin: 10px 0; }
-.achievement-modal__name { font-family: 'Space Grotesk', 'Segoe UI', sans-serif; font-size: 22px; }
+.achievement-modal__trophy { font-size: 54px; margin: 6px 0 2px; }
+.achievement-modal__badge-icon { font-size: 34px; margin-bottom: 4px; }
+.achievement-modal__name { font-family: 'Space Grotesk', 'Segoe UI', sans-serif; font-size: 22px; font-weight: 700; }
 .achievement-modal__xp { color: #ffc23c; font-family: 'JetBrains Mono', 'Courier New', monospace; margin-bottom: 12px; }
-.badge-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
-.badge-tile { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 20px 12px; text-align: center; }
-.badge-tile__icon { font-size: 32px; }
-.badge-tile--locked { opacity: 0.4; }
-.xp-reward-pill { display: inline-flex; align-items: center; gap: 4px; font-family: 'JetBrains Mono', 'Courier New', monospace; color: #ffc23c; }
 
+/* ── Badge grid ────────────────────────────────────────────────────────────── */
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 14px;
+}
+
+.badge-grid__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.badge-grid__count {
+  font-size: 14px;
+  color: #9ea6c9;
+  white-space: nowrap;
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+}
+
+.badge-grid__bar-wrap {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: #1b2544;
+  overflow: hidden;
+}
+
+.badge-grid__bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6366f1, #c026d3);
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.badge-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 20px 12px;
+  text-align: center;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.badge-tile--unlocked:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2);
+}
+
+.badge-tile__icon { font-size: 34px; }
+.badge-tile--locked { opacity: 0.38; }
+
+.badge-tile__xp {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #ffc23c;
+}
+
+.badge-tile__unlocked-tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(45, 212, 167, 0.15);
+  color: #2dd4a7;
+  border: 1px solid rgba(45, 212, 167, 0.3);
+  letter-spacing: 0.04em;
+}
+
+/* ── XP reward pill ─────────────────────────────────────────────────────────── */
+.xp-reward-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  color: #ffc23c;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.xp-reward-pill--sm {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255, 194, 60, 0.12);
+  border: 1px solid rgba(255, 194, 60, 0.25);
+}
+
+/* ── Level-up modal ─────────────────────────────────────────────────────────── */
 .level-up { text-align: center; padding: 8px 0; }
 .level-up__content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
 .level-up__ring {
@@ -29,6 +117,7 @@
   color: #fff;
 }
 
+/* ── Combo meter (legacy) ───────────────────────────────────────────────────── */
 .combo-meter {
   display: inline-flex;
   align-items: center;
@@ -41,4 +130,98 @@
   font-weight: 700;
   font-size: 13px;
   border: 1px solid rgba(255, 122, 69, 0.3);
+}
+
+/* ── Rewards page layout ────────────────────────────────────────────────────── */
+.rewards-section-title {
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #f5f6fc;
+}
+
+.rewards-stats-bar {
+  display: flex;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0e1426;
+  margin-bottom: 20px;
+}
+
+.rewards-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 12px;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.rewards-stat:last-child { border-right: none; }
+
+.rewards-stat__value {
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.rewards-stat__label {
+  font-size: 11px;
+  color: #656d92;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+  text-align: center;
+}
+
+/* Level progress header inside rewards */
+.rewards-level-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+/* ── XP History feed ────────────────────────────────────────────────────────── */
+.xp-history-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.xp-history-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #0e1426;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: border-color 0.15s ease;
+}
+
+.xp-history-row:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.xp-history-row__info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.xp-history-row__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f5f6fc;
+}
+
+.xp-history-row__meta {
+  font-size: 11px;
+  color: #656d92;
 }
