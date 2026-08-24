@@ -20,3 +20,68 @@
 .skill-filter__btn:hover { border-color: rgba(192, 38, 211, 0.4); color: #f5f6fc; }
 .skill-filter__btn--active { background: linear-gradient(135deg, #6366f1, #c026d3); color: #fff; border-color: transparent; }
 .skill-filter__btn--active:hover { background: linear-gradient(135deg, #6366f1, #c026d3); color: #fff; }
+
+/* Quest summary stats bar */
+.quest-stats-bar {
+  display: flex;
+  gap: 0;
+  margin-bottom: 20px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0e1426;
+}
+
+.quest-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 12px;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.quest-stat:last-child { border-right: none; }
+
+.quest-stat__value {
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #f5f6fc;
+  line-height: 1.1;
+}
+
+.quest-stat__label {
+  font-size: 11px;
+  color: #656d92;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 3px;
+}
+
+/* Quest card bottom row */
+.quest-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Streak progress inside quest card */
+.quest-card__streak-progress { padding-top: 2px; }
+.quest-card__streak-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #9ea6c9;
+  margin-bottom: 6px;
+}
+
+/* Success feedback */
+.quiz-feedback--correct {
+  background: rgba(45, 212, 167, 0.1);
+  color: #2dd4a7;
+  border: 1px solid rgba(45, 212, 167, 0.25);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+}
