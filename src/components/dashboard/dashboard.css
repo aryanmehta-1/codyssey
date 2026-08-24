@@ -5,6 +5,95 @@
   margin-bottom: 20px;
 }
 
+/* 4-column responsive stat grid */
+.dash-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* ProgressCard */
+.progress-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.progress-card__top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-card__icon-wrap {
+  font-size: 26px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.progress-card__value {
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #f5f6fc;
+  line-height: 1.1;
+}
+
+.progress-card__label {
+  font-size: 12px;
+  color: #9ea6c9;
+  margin-top: 2px;
+}
+
+/* Streak status badges */
+.streak-card__status {
+  margin-top: 4px;
+}
+
+.streak-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.streak-badge--active {
+  background: rgba(45, 212, 167, 0.15);
+  color: #2dd4a7;
+  border: 1px solid rgba(45, 212, 167, 0.35);
+}
+
+.streak-badge--warning {
+  background: rgba(251, 122, 60, 0.15);
+  color: #fb7a3c;
+  border: 1px solid rgba(251, 122, 60, 0.3);
+  font-size: 10px;
+}
+
+.streak-card__hint {
+  font-size: 12px;
+  color: #656d92;
+  margin-top: 2px;
+}
+
+/* Total XP label inside LevelCard */
+.level-card__total-xp {
+  font-size: 12px;
+  color: #656d92;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  margin-top: 4px;
+}
+
 .level-card {
   display: flex;
   flex-direction: column;
