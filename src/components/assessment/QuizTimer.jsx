@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-/** Optional lightweight per-question timer, purely visual (no server dependency). */
 export default function QuizTimer({ seconds = 30, resetKey, onExpire }) {
   const [remaining, setRemaining] = useState(seconds);
 

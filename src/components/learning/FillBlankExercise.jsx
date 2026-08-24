@@ -1,11 +1,6 @@
 import { useState } from 'react';
 import './learning.css';
 
-/**
- * Duolingo-style "fill in the blank" exercise: the learner taps a word
- * from the option bank to fill the blank in a short code snippet, then
- * gets instant visual feedback before continuing.
- */
 export default function FillBlankExercise({ exercise, onComplete }) {
   const [selected, setSelected] = useState(null);
   const [revealed, setRevealed] = useState(false);

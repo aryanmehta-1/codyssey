@@ -1,6 +1,5 @@
 import './assessment.css';
 
-/** Single answer option button with correct/incorrect visual state after submit. */
 export default function Option({ text, selected, revealed, isCorrect, onSelect }) {
   let className = 'option-btn';
   if (revealed && isCorrect) className += ' option-btn--correct';

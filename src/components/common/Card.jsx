@@ -1,10 +1,10 @@
 import './Card.css';
 
-/** Base surface container used across dashboard, skills, and quest cards. */
-export default function Card({ children, className = '', hover = false, onClick = null }) {
+export default function Card({ children, className = '', hover = false, onClick = null, style = {} }) {
   return (
     <div
       className={`card ${hover ? 'card--hover' : ''} ${className}`}
+      style={style}
       onClick={onClick}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}

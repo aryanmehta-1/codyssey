@@ -1,6 +1,5 @@
 import './learning.css';
 
-/** Top-of-lesson segmented progress bar, one segment per interactive step. */
 export default function LessonProgressBar({ stepIndex, totalSteps, onExit }) {
   return (
     <div className="lesson-progress">

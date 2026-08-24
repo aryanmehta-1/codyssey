@@ -1,7 +1,6 @@
 import Option from './Option';
 import './assessment.css';
 
-/** Renders one question with its options; "concept" and "output" types share this UI. */
 export default function QuestionCard({ question, index, total, selectedIndex, revealed, onSelect }) {
   return (
     <div className="question-card">

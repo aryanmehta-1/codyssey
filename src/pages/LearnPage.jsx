@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useNavigation } from '../hooks/useNavigation';
 import PageContainer from '../components/layout/PageContainer';
 import Card from '../components/common/Card';
 import LessonCard from '../components/learning/LessonCard';
@@ -7,34 +7,25 @@ import InteractiveLesson from '../components/learning/InteractiveLesson';
 import { getLessonsForSkill } from '../data/lessons';
 import { useProgress } from '../hooks/useProgress';
 
-/**
- * Combines the "Learn" listing and the interactive lesson player in one
- * route (/learn). Selecting a lesson swaps in <InteractiveLesson>, a
- * short Duolingo-style flow (concept -> fill-blank -> quick check -> XP),
- * rather than a static reading pane with a single "mark complete" button.
- */
 export default function LearnPage() {
-  const location = useLocation();
+  const { pageParams } = useNavigation();
   const { student, skillsWithProgress, completeLesson } = useProgress();
-  const [activeSkillId, setActiveSkillId] = useState(location.state?.skillId || 'html');
+  const [activeSkillId, setActiveSkillId] = useState(pageParams?.skillId || 'html');
   const [activeLesson, setActiveLesson] = useState(null);
 
   useEffect(() => {
-    if (location.state?.skillId) setActiveSkillId(location.state.skillId);
-  }, [location.state]);
+    if (pageParams?.skillId) setActiveSkillId(pageParams.skillId);
+  }, [pageParams]);
 
   const activeSkill = skillsWithProgress.find((s) => s.id === activeSkillId);
   const lessons = getLessonsForSkill(activeSkillId);
 
   const isCompleted = (id) => student.completedLessonIds.includes(id);
 
-  const handleFinishLesson = () => {
-    if (!isCompleted(activeLesson.id)) {
-      completeLesson(activeLesson.id, activeLesson.xp);
-    }
+  const handleFinishLesson = (rewardXP) => {
+    completeLesson(activeLesson.id, rewardXP);
     setActiveLesson(null);
   };
-
   return (
     <PageContainer title="Learn">
       <div className="skill-filter">

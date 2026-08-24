@@ -2,8 +2,7 @@ import Button from '../common/Button';
 import XPCounter from '../common/XPCounter';
 import './assessment.css';
 
-/** Final quiz summary screen with score, accuracy, combo bonus, and XP earned. */
-export default function QuizResult({ correct, total, xpAwarded, comboBonus = 0, perfect = false, onContinue }) {
+export default function QuizResult({ correct, total, xpAwarded, comboBonus = 0, perfect = false, onContinue, onReattempt }) {
   const accuracy = Math.round((correct / total) * 100);
   return (
     <div className="quiz-result">
@@ -16,7 +15,16 @@ export default function QuizResult({ correct, total, xpAwarded, comboBonus = 0, 
       <p className="badge-chip badge-chip--xp" style={{ fontSize: 14, padding: '8px 16px', marginTop: 10 }}>
         <XPCounter value={xpAwarded} prefix="+" />
       </p>
-      <Button onClick={onContinue} size="lg">Continue</Button>
+      <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginTop: 14, width: '100%', maxWidth: 360 }}>
+        {onReattempt && (
+          <Button onClick={onReattempt} variant="secondary" size="lg" style={{ flex: 1 }}>
+            🔄 Reattempt
+          </Button>
+        )}
+        <Button onClick={onContinue} size="lg" style={{ flex: 1 }}>
+          Continue
+        </Button>
+      </div>
     </div>
   );
 }

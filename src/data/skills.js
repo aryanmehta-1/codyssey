@@ -1,8 +1,4 @@
-/**
- * Skills = the four planets/nodes of the Codeverse.
- * lessonIds reference data/lessons.js so progress can be derived,
- * never hardcoded as a separate percentage.
- */
+
 export const skills = [
   {
     id: 'html',
@@ -48,5 +44,4 @@ export const skills = [
   },
 ];
 
-/** Order defines the Codeverse chain and unlock prerequisites. */
 export const skillOrder = ['html', 'css', 'javascript', 'react'];

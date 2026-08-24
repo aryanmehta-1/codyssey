@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
+import Link from '../common/Link';
 import Card from '../common/Card';
 import './dashboard.css';
 
-/** Shows the most recently unlocked badges on the dashboard. */
 export default function AchievementPreview({ badges }) {
   const unlocked = badges.filter((b) => b.unlocked).slice(-4).reverse();
 

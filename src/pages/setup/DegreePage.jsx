@@ -1,6 +1,5 @@
 import { degrees } from '../../data/courses';
 
-/** Step 1 of onboarding — degree selection. */
 export default function DegreePage({ value, onSelect }) {
   return (
     <>

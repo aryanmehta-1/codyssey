@@ -3,7 +3,6 @@ import Button from '../common/Button';
 import ConfettiBurst from '../common/ConfettiBurst';
 import './rewards.css';
 
-/** Celebratory "Achievement Unlocked" modal shown when a badge condition is met. */
 export default function AchievementModal({ badge, onClose }) {
   if (!badge) return null;
   return (

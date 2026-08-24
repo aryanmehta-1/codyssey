@@ -1,9 +1,4 @@
-/**
- * Quiz question bank. "output" questions double as the beginner-friendly
- * coding challenges described in the brief — no real compiler needed.
- */
 export const questions = [
-  // HTML
   { id: 'q-html-1', skillId: 'html', type: 'concept', prompt: 'Which tag is used for the main navigation links of a page?', options: ['<nav>', '<div>', '<link>', '<menu-bar>'], correctIndex: 0, explanation: '<nav> is the semantic element for a block of navigation links.' },
   { id: 'q-html-2', skillId: 'html', type: 'concept', prompt: 'Which attribute makes an input field mandatory?', options: ['mandatory', 'required', 'validate', 'needed'], correctIndex: 1, explanation: 'The required attribute tells the browser to block submission until the field is filled.' },
   { id: 'q-html-3', skillId: 'html', type: 'concept', prompt: 'What does the CSS box model NOT include?', options: ['Margin', 'Padding', 'Border', 'Opacity'], correctIndex: 3, explanation: 'Opacity affects transparency, not the box\'s size — the box model is content, padding, border, margin.' },
@@ -12,7 +7,6 @@ export const questions = [
   { id: 'q-html-6', skillId: 'html', type: 'concept', prompt: 'What is mobile-first design?', options: ['Designing for mobile only', 'Writing base styles for mobile, then adding rules for larger screens', 'Testing on mobile last', 'Using only vw units'], correctIndex: 1, explanation: 'Mobile-first means base CSS targets small screens, with media queries progressively enhancing larger ones.' },
   { id: 'q-html-7', skillId: 'html', type: 'concept', prompt: 'Which tag improves accessibility for a form field?', options: ['<label>', '<caption>', '<title>', '<desc>'], correctIndex: 0, explanation: '<label> associates descriptive text with an input, helping screen readers and click targets.' },
 
-  // CSS
   { id: 'q-css-1', skillId: 'css', type: 'concept', prompt: 'How do you declare a CSS custom property?', options: ['$primary: blue;', '--primary: blue;', '@primary: blue;', '#primary: blue;'], correctIndex: 1, explanation: 'Custom properties (CSS variables) are declared with a double-dash prefix.' },
   { id: 'q-css-2', skillId: 'css', type: 'concept', prompt: 'Which selector has the highest specificity?', options: ['.card', '#card', 'div', '*'], correctIndex: 1, explanation: 'ID selectors (#card) are more specific than classes or element selectors.' },
   { id: 'q-css-3', skillId: 'css', type: 'concept', prompt: 'Which property animates a change smoothly over time?', options: ['animation-name', 'transition', 'transform-origin', 'keyframe'], correctIndex: 1, explanation: 'transition smoothly animates a property change, e.g. on hover.' },
@@ -21,7 +15,6 @@ export const questions = [
   { id: 'q-css-6', skillId: 'css', type: 'concept', prompt: 'Which keyword makes a variable value reusable via var()?', options: ['--variable-name', 'let', 'const', '$variable'], correctIndex: 0, explanation: 'CSS custom properties are read using var(--variable-name).' },
   { id: 'q-css-7', skillId: 'css', type: 'concept', prompt: 'Which rule prevents flex items from overflowing on small screens?', options: ['flex-wrap: wrap', 'flex-shrink: 0', 'overflow: visible', 'flex: none'], correctIndex: 0, explanation: 'flex-wrap: wrap lets items move to a new line instead of overflowing.' },
 
-  // JavaScript
   { id: 'q-js-1', skillId: 'javascript', type: 'concept', prompt: 'Which keyword declares a constant in JavaScript?', options: ['var', 'let', 'const', 'static'], correctIndex: 2, explanation: 'const declares a binding that cannot be reassigned.' },
   { id: 'q-js-2', skillId: 'javascript', type: 'output', prompt: 'const x = 10;\nconst y = 20;\nconsole.log(x + y);', options: ['1020', '30', '10', 'Error'], correctIndex: 1, explanation: 'x and y are numbers, so + performs addition: 10 + 20 = 30.' },
   { id: 'q-js-3', skillId: 'javascript', type: 'output', prompt: 'console.log(typeof "10" + 5);', options: ['15', '"string5"', 'Error', '"105"'], correctIndex: 1, explanation: 'typeof "10" evaluates first to "string", then "string" + 5 concatenates to "string5".' },
@@ -35,7 +28,6 @@ export const questions = [
   { id: 'q-js-11', skillId: 'javascript', type: 'concept', prompt: 'Which array method finds the first matching element?', options: ['find()', 'filter()', 'map()', 'includes()'], correctIndex: 0, explanation: 'find() returns the first element that satisfies the test function, or undefined.' },
   { id: 'q-js-12', skillId: 'javascript', type: 'output', prompt: 'const { title, xp } = { title: "Quest", xp: 50 };\nconsole.log(title, xp);', options: ['undefined undefined', 'Quest 50', 'Error', '{title} {xp}'], correctIndex: 1, explanation: 'Destructuring pulls title and xp out of the object into local variables.' },
 
-  // React
   { id: 'q-react-1', skillId: 'react', type: 'concept', prompt: 'What does JSX compile down to?', options: ['HTML strings', 'JavaScript function calls', 'CSS rules', 'JSON'], correctIndex: 1, explanation: 'JSX compiles to React.createElement() calls, which are plain JavaScript.' },
   { id: 'q-react-2', skillId: 'react', type: 'concept', prompt: 'How does data flow between a parent and child component?', options: ['Via global variables', 'Via props, from parent to child', 'Automatically, both ways', 'Via the DOM'], correctIndex: 1, explanation: 'React data flow is one-directional: parents pass data down to children through props.' },
   { id: 'q-react-3', skillId: 'react', type: 'concept', prompt: 'What does calling a useState setter function do?', options: ['Nothing until refresh', 'Immediately mutates the variable', 'Schedules a re-render with the new value', 'Deletes the component'], correctIndex: 2, explanation: 'Calling the setter tells React to re-render the component using the new state value.' },

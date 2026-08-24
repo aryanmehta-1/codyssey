@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigation } from '../hooks/useNavigation';
 import Button from '../components/common/Button';
 import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
@@ -12,13 +12,8 @@ import './pages.css';
 
 const STEPS = ['degree', 'branch', 'college', 'year', 'goal'];
 
-/**
- * Orchestrates the 5 onboarding steps (Degree → Branch → College → Year → Goal).
- * Each step is its own component under pages/setup/, kept purely presentational;
- * this page owns the wizard state so there's a single source of truth to explain.
- */
 export default function SetupPage() {
-  const navigate = useNavigate();
+  const { navigate } = useNavigation();
   const { completeOnboarding } = useAuth();
   const { setOnboarding } = useProgress();
   const [stepIndex, setStepIndex] = useState(0);
@@ -36,7 +31,7 @@ export default function SetupPage() {
     }
     completeOnboarding(answers);
     setOnboarding(answers);
-    navigate('/dashboard');
+    navigate('dashboard');
   };
 
   const handleBack = () => setStepIndex((i) => Math.max(0, i - 1));

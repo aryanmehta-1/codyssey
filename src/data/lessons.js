@@ -1,9 +1,6 @@
-/**
- * Micro-learning lessons. Each lesson is short, self-contained,
- * and worth XP_REWARDS.LESSON_COMPLETE when marked complete.
- */
+
 export const lessons = [
-  // ---------------- HTML ----------------
+  
   {
     id: 'html-1',
     skillId: 'html',
@@ -70,7 +67,6 @@ export const lessons = [
     topics: ['Flexbox', 'Grid', 'layout'],
   },
 
-  // ---------------- CSS ----------------
   {
     id: 'css-1',
     skillId: 'css',
@@ -137,7 +133,6 @@ export const lessons = [
     topics: ['Grid', 'responsive design'],
   },
 
-  // ---------------- JavaScript ----------------
   {
     id: 'js-1',
     skillId: 'javascript',
@@ -243,7 +238,6 @@ export const lessons = [
     topics: ['Promises', 'async/await'],
   },
 
-  // ---------------- React ----------------
   {
     id: 'react-1',
     skillId: 'react',

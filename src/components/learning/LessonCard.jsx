@@ -2,7 +2,6 @@ import Card from '../common/Card';
 import Badge from '../common/Badge';
 import './learning.css';
 
-/** Compact lesson list-item used inside the Learn page. */
 export default function LessonCard({ lesson, completed, onClick }) {
   return (
     <Card className="lesson-card" hover onClick={onClick}>

@@ -8,12 +8,13 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  font-family: var(--font-mono);
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
 }
-.badge-chip--default { background: var(--surface-hover); color: var(--text-secondary); }
-.badge-chip--primary { background: rgba(91, 110, 245, 0.16); color: #a3b0ff; }
-.badge-chip--success { background: rgba(52, 211, 153, 0.16); color: var(--success); }
-.badge-chip--xp { background: rgba(251, 191, 36, 0.16); color: var(--xp); }
-.badge-chip--streak { background: rgba(251, 122, 60, 0.16); color: var(--streak); }
-.badge-chip--locked { background: rgba(74, 81, 112, 0.25); color: var(--locked); }
-.badge-chip--danger { background: rgba(244, 63, 94, 0.16); color: var(--danger); }
+.badge-chip--default { background: #1b2544; color: #9ea6c9; }
+.badge-chip--primary { background: rgba(91, 110, 245, 0.16); color: #6366f1; }
+.badge-chip--secondary { background: rgba(192, 38, 211, 0.14); color: #c026d3; }
+.badge-chip--success { background: rgba(52, 211, 153, 0.16); color: #2dd4a7; }
+.badge-chip--xp { background: rgba(251, 191, 36, 0.16); color: #ffc23c; }
+.badge-chip--streak { background: rgba(251, 122, 60, 0.16); color: #ff7a45; }
+.badge-chip--locked { background: rgba(74, 81, 112, 0.25); color: #4a5170; }
+.badge-chip--danger { background: rgba(244, 63, 94, 0.16); color: #fb4570; }

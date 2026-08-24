@@ -1,4 +1,4 @@
-/** Short framing text above a simulated coding challenge. */
+
 export default function ProblemStatement({ title, description }) {
   return (
     <div style={{ marginBottom: 14 }}>

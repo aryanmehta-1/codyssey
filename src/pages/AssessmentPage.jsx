@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigation } from '../hooks/useNavigation';
 import PageContainer from '../components/layout/PageContainer';
 import Card from '../components/common/Card';
 import Button from '../components/common/Button';
@@ -9,30 +9,40 @@ import QuizResult from '../components/assessment/QuizResult';
 import { getQuestionsForSkill } from '../data/questions';
 import { useProgress } from '../hooks/useProgress';
 
-const COMBO_BONUS_PER_STEP = 4; // small XP bonus per combo tier, on top of base quiz XP
-
 export default function AssessmentPage() {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const { pageParams, navigate } = useNavigation();
   const { submitQuizResult } = useProgress();
 
-  const skillId = location.state?.skillId || 'html';
-  const questId = location.state?.questId || null;
-  const questTitle = location.state?.questTitle || 'Practice Quiz';
+  
+  const skillId = pageParams?.skillId || 'html';
+  const questId = pageParams?.questId || null;
+  const questTitle = pageParams?.questTitle || 'Practice Quiz';
+  const questionCount = pageParams?.questionCount || (questId?.includes('daily') ? 3 : 5);
 
-  const questions = useMemo(() => getQuestionsForSkill(skillId, 5), [skillId]);
-
+  
+  const [questions, setQuestions] = useState(() => getQuestionsForSkill(skillId, questionCount));
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState(null);
   const [revealed, setRevealed] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
-  const [combo, setCombo] = useState(0);
-  const [maxCombo, setMaxCombo] = useState(0);
   const [finished, setFinished] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [xpAwarded, setXpAwarded] = useState(0);
-  const [comboBonusEarned, setComboBonusEarned] = useState(0);
 
-  if (questions.length === 0) {
+  
+  const handleReattempt = () => {
+    setQuestions(getQuestionsForSkill(skillId, questionCount));
+    setIndex(0);
+    setSelected(null);
+    setRevealed(false);
+    setCorrectCount(0);
+    setFinished(false);
+    setIsSubmitting(false);
+    setXpAwarded(0);
+  };
+
+  
+  if (!questions || questions.length === 0) {
     return (
       <PageContainer title="Quiz">
         <Card><p>No questions available for this skill yet.</p></Card>
@@ -43,41 +53,41 @@ export default function AssessmentPage() {
   const current = questions[index];
   const isPerfect = finished && correctCount === questions.length;
 
-  const handleSelect = (i) => {
-    setSelected(i);
+  
+  const handleSelect = (optionIndex) => {
+    setSelected(optionIndex);
     setRevealed(true);
-    if (i === current.correctIndex) {
-      setCorrectCount((c) => c + 1);
-      setCombo((c) => {
-        const next = c + 1;
-        setMaxCombo((m) => Math.max(m, next));
-        return next;
-      });
-    } else {
-      setCombo(0);
+    if (optionIndex === current.correctIndex) {
+      setCorrectCount((prev) => prev + 1);
     }
   };
 
+  
   const handleNext = () => {
+    if (isSubmitting) return;
+
+    
     if (index < questions.length - 1) {
-      setIndex((i) => i + 1);
+      setIndex((prev) => prev + 1);
       setSelected(null);
       setRevealed(false);
       return;
     }
-    const finalComboBonus = maxCombo >= 3 ? (maxCombo - 2) * COMBO_BONUS_PER_STEP : 0;
+
+    
+    setIsSubmitting(true);
     const awarded = submitQuizResult({
       skillId,
       correct: correctCount,
       total: questions.length,
       questId,
-      comboBonus: finalComboBonus,
     });
-    setComboBonusEarned(finalComboBonus);
+
     setXpAwarded(awarded);
     setFinished(true);
   };
 
+  
   if (finished) {
     return (
       <PageContainer title={questTitle}>
@@ -87,26 +97,19 @@ export default function AssessmentPage() {
             correct={correctCount}
             total={questions.length}
             xpAwarded={xpAwarded}
-            comboBonus={comboBonusEarned}
             perfect={isPerfect}
-            onContinue={() => navigate('/quests')}
+            onContinue={() => navigate('quests')}
+            onReattempt={handleReattempt}
           />
         </Card>
       </PageContainer>
     );
   }
 
+  
   return (
     <PageContainer title={questTitle}>
       <Card>
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 12 }}>
-          {combo >= 2 && (
-            <span className="combo-meter combo-pop" key={combo}>
-              🔥 {combo}x Combo
-            </span>
-          )}
-        </div>
-
         <QuestionCard
           question={current}
           index={index}
@@ -127,8 +130,8 @@ export default function AssessmentPage() {
         )}
 
         <div style={{ marginTop: 20, display: 'flex', justifyContent: 'flex-end' }}>
-          <Button onClick={handleNext} disabled={!revealed}>
-            {index < questions.length - 1 ? 'Next Question' : 'See Results'}
+          <Button onClick={handleNext} disabled={!revealed || isSubmitting}>
+            {index < questions.length - 1 ? 'Next Question' : isSubmitting ? 'Submitting...' : 'See Results'}
           </Button>
         </div>
       </Card>

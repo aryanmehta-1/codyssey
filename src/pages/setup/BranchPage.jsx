@@ -1,6 +1,5 @@
 import { branches } from '../../data/courses';
 
-/** Step 2 of onboarding — branch selection. */
 export default function BranchPage({ value, onSelect }) {
   return (
     <>

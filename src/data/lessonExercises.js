@@ -1,10 +1,4 @@
-/**
- * Interactive exercise data for the Duolingo-style lesson flow.
- * Each lesson gets ONE fill-in-the-blank code exercise (hand-authored,
- * tied to that lesson's own code sample) — the quick-check multiple
- * choice question is pulled programmatically from the skill's question
- * pool in questions.js so it doesn't need to be duplicated by hand.
- */
+
 export const fillBlankExercises = {
   'html-1': { template: '<____>\n  <h1>Codyssey</h1>\n</header>', answer: 'header', options: ['header', 'div', 'span', 'body'] },
   'html-2': { template: '<____ for="email">Email</label>', answer: 'label', options: ['label', 'input', 'span', 'legend'] },
@@ -39,12 +33,6 @@ export function getFillBlankForLesson(lessonId) {
   return fillBlankExercises[lessonId] || null;
 }
 
-/**
- * Deterministically picks a "quick check" question for a lesson from that
- * skill's question pool (questions.js), cycling if a skill has fewer
- * questions than lessons. Keeps practice questions varied without needing
- * a hand-written mapping for every lesson.
- */
 export function getQuickCheckForLesson(lesson, allLessonsForSkill, allQuestionsForSkill) {
   if (!allQuestionsForSkill || allQuestionsForSkill.length === 0) return null;
   const lessonIndex = allLessonsForSkill.findIndex((l) => l.id === lesson.id);

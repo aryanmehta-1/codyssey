@@ -2,7 +2,6 @@ import Badge from '../common/Badge';
 import Button from '../common/Button';
 import './learning.css';
 
-/** Full lesson reading view with code sample and a "mark complete" action. */
 export default function LessonContent({ lesson, completed, onComplete }) {
   return (
     <div className="lesson-content">

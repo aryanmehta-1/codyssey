@@ -1,7 +1,6 @@
 import Card from '../common/Card';
 import './dashboard.css';
 
-/** Compact streak-counter card with a lit flame once the streak is active. */
 export default function StreakCard({ streak }) {
   const isLit = streak.count > 0;
   return (

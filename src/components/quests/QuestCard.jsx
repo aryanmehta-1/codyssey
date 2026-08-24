@@ -5,7 +5,6 @@ import './quests.css';
 
 const TYPE_ICON = { daily: '📅', learning: '📘', quiz: '🧠', challenge: '⚔', streak: '🔥' };
 
-/** Single quest card with type, difficulty stars, reward, and status-aware action. */
 export default function QuestCard({ quest, onStart }) {
   const tone = { locked: 'locked', available: 'primary', completed: 'success' }[quest.status] || 'default';
   return (
@@ -27,7 +26,13 @@ export default function QuestCard({ quest, onStart }) {
           disabled={quest.status === 'locked'}
           onClick={() => onStart(quest)}
         >
-          {quest.status === 'completed' ? 'Completed' : quest.status === 'locked' ? 'Locked' : 'Start Quest'}
+          {quest.status === 'locked'
+            ? 'Locked'
+            : quest.status === 'completed'
+            ? quest.type === 'streak'
+              ? 'Claimed ✓'
+              : 'Reattempt'
+            : 'Start Quest'}
         </Button>
       </div>
     </Card>

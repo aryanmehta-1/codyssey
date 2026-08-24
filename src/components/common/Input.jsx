@@ -1,6 +1,5 @@
 import './Input.css';
 
-/** Reusable labeled input with inline validation error text. */
 export default function Input({
   label,
   id,

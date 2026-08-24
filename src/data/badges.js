@@ -1,7 +1,4 @@
-/**
- * Achievement badges. `condition` is a small descriptor evaluated by
- * useProgress against the student's live state — see checkBadgeUnlocks().
- */
+
 export const badges = [
   { id: 'html-hero', name: 'HTML Hero', icon: '🏅', xp: 25, description: 'Complete HTML basics.', condition: { type: 'skillComplete', skillId: 'html' } },
   { id: 'css-creator', name: 'CSS Creator', icon: '🎨', xp: 25, description: 'Complete CSS fundamentals.', condition: { type: 'skillComplete', skillId: 'css' } },

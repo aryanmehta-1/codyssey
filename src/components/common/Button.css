@@ -4,11 +4,11 @@
   justify-content: center;
   gap: 8px;
   border: none;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-body);
+  border-radius: 10px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background-position 0.4s ease, opacity 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
   white-space: nowrap;
 }
 .btn:active { transform: translateY(1px); }
@@ -20,33 +20,35 @@
 
 .btn--full { width: 100%; }
 
-.btn--primary {
-  background: var(--gradient-brand-3);
-  background-size: 160% 160%;
-  color: #fff;
+.btn--primary, .btn--success {
+  background: linear-gradient(135deg, #6366f1, #c026d3);
+  color: #ffffff;
   box-shadow: 0 4px 18px rgba(99, 102, 241, 0.35);
 }
-.btn--primary:hover:not(:disabled) {
-  box-shadow: var(--shadow-glow-primary);
-  transform: translateY(-1px) scale(1.015);
-  background-position: 100% 0;
+.btn--primary:hover:not(:disabled), .btn--success:hover:not(:disabled) {
+  background: linear-gradient(135deg, #6366f1, #c026d3);
+  box-shadow: 0 4px 18px rgba(99, 102, 241, 0.35);
+  transform: translateY(-1px);
 }
 
 .btn--secondary {
-  background: var(--surface-hover);
-  color: var(--text-primary);
-  border: 1px solid var(--border-strong);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(192, 38, 211, 0.3));
+  color: #ffffff;
+  border: 1px solid rgba(192, 38, 211, 0.5);
 }
-.btn--secondary:hover:not(:disabled) { background: var(--surface); border-color: var(--primary); }
+.btn--secondary:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(192, 38, 211, 0.3));
+  border-color: rgba(192, 38, 211, 0.8);
+  transform: translateY(-1px);
+}
 
 .btn--ghost {
-  background: transparent;
-  color: var(--text-secondary);
+  background: rgba(99, 102, 241, 0.12);
+  color: #ffffff;
+  border: 1px solid rgba(99, 102, 241, 0.25);
 }
-.btn--ghost:hover:not(:disabled) { color: var(--text-primary); background: var(--surface); }
-
-.btn--success {
-  background: var(--success);
-  color: #08201a;
+.btn--ghost:hover:not(:disabled) {
+  background: rgba(99, 102, 241, 0.12);
+  color: #ffffff;
+  border-color: rgba(192, 38, 211, 0.4);
 }
-.btn--success:hover:not(:disabled) { box-shadow: 0 0 20px rgba(52, 211, 153, 0.4); }

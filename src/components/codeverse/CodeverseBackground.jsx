@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import './codeverse.css';
 
-/** Decorative floating-star field behind the Codeverse chain. Pure CSS/SVG, no game engine. */
 export default function CodeverseBackground() {
   const stars = useMemo(
     () =>
@@ -21,7 +20,7 @@ export default function CodeverseBackground() {
         <span
           key={s.id}
           className="codeverse-star"
-          style={{ top: s.top, left: s.left, animationDelay: s.delay, width: s.size, height: s.size }}
+          style={{ top: s.top, left: s.left, width: s.size, height: s.size }}
         />
       ))}
     </div>

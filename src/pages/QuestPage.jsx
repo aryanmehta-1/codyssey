@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigation } from '../hooks/useNavigation';
 import PageContainer from '../components/layout/PageContainer';
 import QuestList from '../components/quests/QuestList';
 import QuestDetails from '../components/quests/QuestDetails';
@@ -9,7 +9,7 @@ const TYPE_FILTERS = ['all', 'daily', 'learning', 'quiz', 'challenge', 'streak']
 
 export default function QuestPage() {
   const { questsWithStatus, student, completeQuest } = useProgress();
-  const navigate = useNavigate();
+  const { navigate } = useNavigation();
   const [filter, setFilter] = useState('all');
   const [pendingQuest, setPendingQuest] = useState(null);
   const [notice, setNotice] = useState('');
@@ -17,10 +17,10 @@ export default function QuestPage() {
   const filtered = questsWithStatus.filter((q) => filter === 'all' || q.type === filter);
 
   const handleStart = (quest) => {
-    if (quest.status !== 'available') return;
+    if (quest.status === 'locked') return;
     setNotice('');
     if (quest.type === 'learning') {
-      navigate('/learn', { state: { skillId: quest.skillId } });
+      navigate('learn', { skillId: quest.skillId });
       return;
     }
     if (quest.type === 'quiz' || quest.type === 'challenge' || quest.type === 'daily') {
@@ -28,7 +28,9 @@ export default function QuestPage() {
       return;
     }
     if (quest.type === 'streak') {
-      if (student.streak.count >= quest.streakDays) {
+      if (quest.status === 'completed') {
+        setNotice(`Milestone completed! You're currently on a ${student.streak.count}-day streak.`);
+      } else if (student.streak.count >= quest.streakDays) {
         completeQuest(quest.id);
       } else {
         setNotice(`Keep learning! You're at a ${student.streak.count}-day streak — reach ${quest.streakDays} days to claim this quest.`);
@@ -38,7 +40,12 @@ export default function QuestPage() {
 
   const confirmQuest = (quest) => {
     setPendingQuest(null);
-    navigate('/quiz', { state: { skillId: quest.skillId, questId: quest.id, questTitle: quest.title } });
+    navigate('quiz', {
+      skillId: quest.skillId,
+      questId: quest.id,
+      questTitle: quest.title,
+      questionCount: quest.questionCount || (quest.type === 'daily' ? 3 : 5),
+    });
   };
 
   return (

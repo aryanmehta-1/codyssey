@@ -4,14 +4,22 @@ import Card from '../components/common/Card';
 import Input from '../components/common/Input';
 import Button from '../components/common/Button';
 import { dailyGoalOptions } from '../data/courses';
+import { collegeDetails } from '../data/colleges';
 import { useProgress } from '../hooks/useProgress';
+import { Building2 } from 'lucide-react';
 
 export default function SettingsPage() {
-  const { student, updateSettings, resetProgress } = useProgress();
+  const { student, updateSettings, setOnboarding, resetProgress } = useProgress();
   const [displayName, setDisplayName] = useState(student.settings.displayName);
   const [confirmingReset, setConfirmingReset] = useState(false);
 
+  const currentCollege = student.onboarding?.college || 'Chitkara University';
+
   const saveName = () => updateSettings({ displayName });
+
+  const handleCollegeChange = (collegeName) => {
+    setOnboarding({ ...(student.onboarding || {}), college: collegeName });
+  };
 
   const handleReset = () => {
     resetProgress();
@@ -20,13 +28,54 @@ export default function SettingsPage() {
 
   return (
     <PageContainer title="Settings">
-      <Card className="settings-section">
-        <h3 style={{ marginBottom: 14 }}>Profile</h3>
-        <Input label="Display Name" id="displayName" value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
-        <Button variant="secondary" onClick={saveName}>Save Name</Button>
+      
+      <Card className="settings-section" style={{ marginBottom: 20 }}>
+        <h3 style={{ marginBottom: 14 }}>Profile & Student Info</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <Input label="Display Name" id="displayName" value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
+          <Button variant="secondary" onClick={saveName} style={{ alignSelf: 'flex-start' }}>
+            Save Display Name
+          </Button>
+        </div>
       </Card>
 
-      <Card className="settings-section">
+      <Card className="settings-section" style={{ marginBottom: 20 }}>
+        <h3 style={{ marginBottom: 6, display: 'flex', alignItems: 'center', gap: 8 }}>
+          <Building2 size={18} color="#6366f1" /> University & Campus
+        </h3>
+        <p className="text-secondary" style={{ fontSize: 13, marginBottom: 14 }}>
+          Select your university to participate in campus standings & leaderboards.
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 10 }}>
+          {collegeDetails.map((c) => {
+            const isSelected = currentCollege === c.name;
+            return (
+              <button
+                key={c.id}
+                type="button"
+                className={`setup-option ${isSelected ? 'setup-option--selected' : ''}`}
+                onClick={() => handleCollegeChange(c.name)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 10,
+                  padding: '12px 14px',
+                  textAlign: 'left',
+                }}
+              >
+                <span style={{ fontSize: 20 }}>{c.badge}</span>
+                <div>
+                  <strong style={{ fontSize: 13, display: 'block' }}>{c.shortName}</strong>
+                  <span className="text-muted" style={{ fontSize: 11 }}>{c.location}</span>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </Card>
+
+      <Card className="settings-section" style={{ marginBottom: 20 }}>
         <h3 style={{ marginBottom: 14 }}>Daily Goal</h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {dailyGoalOptions.map((opt) => (
@@ -42,17 +91,7 @@ export default function SettingsPage() {
       </Card>
 
       <Card className="settings-section">
-        <div className="settings-row">
-          <div>
-            <strong>Theme</strong>
-            <p className="text-secondary" style={{ fontSize: 12 }}>Codyssey is dark-themed by design — light mode is on the Phase II roadmap.</p>
-          </div>
-          <span className="badge-chip badge-chip--primary">Dark</span>
-        </div>
-      </Card>
-
-      <Card className="settings-section">
-        <h3 style={{ marginBottom: 10, color: 'var(--danger)' }}>Danger Zone</h3>
+        <h3 style={{ marginBottom: 10, color: '#fb4570' }}>Danger Zone</h3>
         <p className="text-secondary" style={{ fontSize: 13, marginBottom: 14 }}>
           This clears all XP, levels, streaks, badges, and lesson/quest progress stored in this browser.
         </p>
@@ -61,7 +100,7 @@ export default function SettingsPage() {
         ) : (
           <div style={{ display: 'flex', gap: 10 }}>
             <Button variant="ghost" onClick={() => setConfirmingReset(false)}>Cancel</Button>
-            <Button onClick={handleReset} variant="secondary" style={{ color: 'var(--danger)' }}>
+            <Button onClick={handleReset} variant="secondary" style={{ color: '#fb4570' }}>
               Confirm Reset
             </Button>
           </div>
@@ -70,3 +109,4 @@ export default function SettingsPage() {
     </PageContainer>
   );
 }
+

@@ -1,8 +1,5 @@
 import './Button.css';
 
-/**
- * Reusable Button. variant: 'primary' | 'secondary' | 'ghost' | 'success'
- */
 export default function Button({
   children,
   variant = 'primary',

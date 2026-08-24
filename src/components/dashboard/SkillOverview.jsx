@@ -1,15 +1,14 @@
-import { Link } from 'react-router-dom';
+import Link from '../common/Link';
 import Card from '../common/Card';
 import ProgressBar from '../common/ProgressBar';
 import './dashboard.css';
 
-/** Compact skill progress list, mirrors the Codeverse state on the dashboard. */
 export default function SkillOverview({ skills }) {
   return (
     <Card className="skill-overview">
       <div className="today-plan__header">
         <h3>Skill Progress</h3>
-        <Link to="/skills" className="text-secondary" style={{ fontSize: 13 }}>View all</Link>
+        <Link to="learn" className="text-secondary" style={{ fontSize: 13 }}>View all</Link>
       </div>
       {skills.map((skill) => (
         <div className="skill-overview__row" key={skill.id}>

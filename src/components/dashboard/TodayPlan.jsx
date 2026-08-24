@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom';
+import Link from '../common/Link';
 import Card from '../common/Card';
 import Button from '../common/Button';
 import './dashboard.css';
 
-/** Surfaces a handful of "available" quests as today's recommended actions. */
 export default function TodayPlan({ quests }) {
   const todaysQuests = quests.filter((q) => q.status === 'available').slice(0, 3);
 

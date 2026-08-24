@@ -1,6 +1,5 @@
 import { years } from '../../data/courses';
 
-/** Step 4 of onboarding — year selection. */
 export default function YearPage({ value, onSelect }) {
   return (
     <>

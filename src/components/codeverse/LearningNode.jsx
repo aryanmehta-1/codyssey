@@ -1,6 +1,5 @@
 import './codeverse.css';
 
-/** A single Codeverse planet/node — one per skill, colored and stated by progress. */
 export default function LearningNode({ skill, onClick }) {
   const isLocked = skill.status === 'locked';
   const isCurrent = skill.status === 'current';

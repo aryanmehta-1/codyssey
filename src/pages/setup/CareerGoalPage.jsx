@@ -1,6 +1,5 @@
 import { careerGoals } from '../../data/courses';
 
-/** Step 5 of onboarding — career goal selection, final step. */
 export default function CareerGoalPage({ value, onSelect }) {
   return (
     <>

@@ -1,57 +1,69 @@
-import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard,
   Rocket,
   BookOpen,
   Swords,
-  Layers,
   Award,
   User,
   Settings,
   LogOut,
 } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
+import { useNavigation } from '../../hooks/useNavigation';
 import './Sidebar.css';
 
 const NAV_ITEMS = [
-  { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { to: '/codeverse', label: 'Codeverse', icon: Rocket },
-  { to: '/learn', label: 'Learn', icon: BookOpen },
-  { to: '/quests', label: 'Quests', icon: Swords },
-  { to: '/skills', label: 'Skills', icon: Layers },
-  { to: '/rewards', label: 'Rewards', icon: Award },
-  { to: '/profile', label: 'Profile', icon: User },
+  { page: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { page: 'codeverse', label: 'Codeverse', icon: Rocket },
+  { page: 'learn', label: 'Learn', icon: BookOpen },
+  { page: 'quests', label: 'Quests', icon: Swords },
+  { page: 'rewards', label: 'Rewards', icon: Award },
+  { page: 'profile', label: 'Profile', icon: User },
 ];
 
 export default function Sidebar() {
   const { logout } = useAuth();
+  const { currentPage, navigate } = useNavigation();
+
+  const handleLogout = () => {
+    logout();
+    navigate('landing');
+  };
 
   return (
     <aside className="sidebar">
-      <div className="sidebar-logo">
+      <div className="sidebar-logo" onClick={() => navigate('dashboard')} style={{ cursor: 'pointer' }}>
         <span className="sidebar-logo-mark">⚡</span>
         <span className="sidebar-logo-text">Codyssey</span>
       </div>
 
       <nav className="sidebar-nav">
-        {NAV_ITEMS.map(({ to, label, icon: Icon }) => (
-          <NavLink
-            key={to}
-            to={to}
-            className={({ isActive }) => `sidebar-link ${isActive ? 'sidebar-link--active' : ''}`}
-          >
-            <Icon size={19} strokeWidth={2} />
-            <span className="sidebar-label">{label}</span>
-          </NavLink>
-        ))}
+        {NAV_ITEMS.map(({ page, label, icon: Icon }) => {
+          const isActive = currentPage === page;
+          return (
+            <button
+              key={page}
+              type="button"
+              onClick={() => navigate(page)}
+              className={`sidebar-link ${isActive ? 'sidebar-link--active' : ''}`}
+            >
+              <Icon size={19} strokeWidth={2} />
+              <span className="sidebar-label">{label}</span>
+            </button>
+          );
+        })}
       </nav>
 
       <div className="sidebar-footer">
-        <NavLink to="/settings" className={({ isActive }) => `sidebar-link ${isActive ? 'sidebar-link--active' : ''}`}>
+        <button
+          type="button"
+          onClick={() => navigate('settings')}
+          className={`sidebar-link ${currentPage === 'settings' ? 'sidebar-link--active' : ''}`}
+        >
           <Settings size={19} />
           <span className="sidebar-label">Settings</span>
-        </NavLink>
-        <button className="sidebar-link sidebar-logout" onClick={logout}>
+        </button>
+        <button type="button" className="sidebar-link sidebar-logout" onClick={handleLogout}>
           <LogOut size={19} />
           <span className="sidebar-label">Log Out</span>
         </button>

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import './Modal.css';
 
-/** Generic centered modal with backdrop, used by AchievementModal and confirmations. */
 export default function Modal({ open, onClose, children, closeOnBackdrop = true }) {
   useEffect(() => {
     if (!open) return;
@@ -14,7 +14,7 @@ export default function Modal({ open, onClose, children, closeOnBackdrop = true 
 
   if (!open) return null;
 
-  return (
+  return createPortal(
     <div
       className="modal-backdrop"
       onClick={() => closeOnBackdrop && onClose?.()}
@@ -28,6 +28,8 @@ export default function Modal({ open, onClose, children, closeOnBackdrop = true 
       >
         {children}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
+

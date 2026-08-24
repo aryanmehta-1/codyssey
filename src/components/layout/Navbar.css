@@ -23,14 +23,14 @@
   border-radius: 999px;
   font-size: 13px;
   font-weight: 700;
-  border: 1px solid var(--border);
-  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #121a30;
 }
-.navbar-stat--streak { color: var(--streak); }
-.navbar-stat--xp { color: var(--xp); }
-.navbar-stat--level { color: var(--primary); }
+.navbar-stat--streak { color: #ff7a45; }
+.navbar-stat--xp { color: #ffc23c; }
+.navbar-stat--level { color: #6366f1; }
 
 .navbar-stat--streak-lit {
-  animation: pulse-glow 2.2s ease-in-out infinite;
   border-color: rgba(255, 122, 69, 0.4);
 }
+

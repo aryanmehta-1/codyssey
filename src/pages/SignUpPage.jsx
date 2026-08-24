@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from '../components/common/Link';
+import { useNavigation } from '../hooks/useNavigation';
 import Input from '../components/common/Input';
 import Button from '../components/common/Button';
 import { useAuth } from '../hooks/useAuth';
@@ -8,7 +9,7 @@ import './pages.css';
 
 export default function SignUpPage() {
   const { signUp } = useAuth();
-  const navigate = useNavigate();
+  const { navigate } = useNavigation();
   const [form, setForm] = useState({ name: '', email: '', password: '', confirmPassword: '' });
   const [errors, setErrors] = useState({});
   const [formError, setFormError] = useState('');
@@ -26,7 +27,7 @@ export default function SignUpPage() {
       setFormError(result.error);
       return;
     }
-    navigate('/setup');
+    navigate('setup');
   };
 
   return (
@@ -34,7 +35,7 @@ export default function SignUpPage() {
       <div className="auth-card">
         <div className="auth-card__logo">
           <div className="auth-card__logo-mark">⚡</div>
-          <strong style={{ fontFamily: 'var(--font-display)', fontSize: 18 }}>Codyssey</strong>
+          <strong style={{ fontFamily: "'Space Grotesk', 'Segoe UI', sans-serif", fontSize: 18 }}>Codyssey</strong>
         </div>
         <h2 style={{ marginBottom: 4 }}>Create your account</h2>
         <p className="text-secondary" style={{ fontSize: 13, marginBottom: 22 }}>
@@ -52,7 +53,7 @@ export default function SignUpPage() {
         </form>
 
         <p className="auth-card__footer">
-          Already have an account? <Link to="/signin" style={{ color: 'var(--primary)', fontWeight: 600 }}>Sign In</Link>
+          Already have an account? <Link to="/signin" style={{ color: '#6366f1', fontWeight: 600 }}>Sign In</Link>
         </p>
       </div>
     </div>

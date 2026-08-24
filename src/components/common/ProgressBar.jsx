@@ -1,9 +1,6 @@
 import './ProgressBar.css';
 
-/**
- * Animated progress bar. color accepts a CSS variable name or hex value.
- */
-export default function ProgressBar({ percent = 0, color = 'var(--primary)', height = 10, label = null }) {
+export default function ProgressBar({ percent = 0, color = '#6366f1', height = 10, label = null }) {
   const clamped = Math.max(0, Math.min(100, percent));
   return (
     <div className="progress-bar-wrap">

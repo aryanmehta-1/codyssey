@@ -1,16 +1,16 @@
 .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-.field__label { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
-.field__required { color: var(--danger); }
+.field__label { font-size: 13px; font-weight: 600; color: #9ea6c9; }
+.field__required { color: #fb4570; }
 .field__input {
-  background: var(--surface-alt);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  background: #0e1426;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
   padding: 12px 14px;
   font-size: 14px;
-  color: var(--text-primary);
+  color: #f5f6fc;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
-.field__input::placeholder { color: var(--text-muted); }
-.field__input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(91, 110, 245, 0.18); outline: none; }
-.field__input--error { border-color: var(--danger); }
-.field__error { font-size: 12px; color: var(--danger); }
+.field__input::placeholder { color: #656d92; }
+.field__input:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(91, 110, 245, 0.18); outline: none; }
+.field__input--error { border-color: #fb4570; }
+.field__error { font-size: 12px; color: #fb4570; }

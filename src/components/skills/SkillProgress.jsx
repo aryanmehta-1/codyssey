@@ -1,6 +1,5 @@
 import ProgressBar from '../common/ProgressBar';
 
-/** Inline skill progress readout — reused inside Profile stats. */
 export default function SkillProgress({ skill }) {
   return (
     <div style={{ marginBottom: 12 }}>

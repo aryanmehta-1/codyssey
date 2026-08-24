@@ -1,7 +1,6 @@
 import Card from '../common/Card';
 import './rewards.css';
 
-/** Grid of all badges, locked and unlocked. */
 export default function BadgeGrid({ badges }) {
   return (
     <div className="badge-grid">

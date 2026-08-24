@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigation } from '../../hooks/useNavigation';
 import { CheckCircle2, Circle, Lock } from 'lucide-react';
 import Modal from '../common/Modal';
 import Button from '../common/Button';
@@ -7,9 +7,8 @@ import { getLessonsForSkill } from '../../data/lessons';
 import { getQuestsForSkill } from '../../data/quests';
 import './codeverse.css';
 
-/** Modal shown when a Codeverse node is clicked — lesson checklist + next quest. */
 export default function NodeDetails({ skill, completedLessonIds, quests, onClose }) {
-  const navigate = useNavigate();
+  const { navigate } = useNavigation();
   if (!skill) return null;
 
   const skillLessons = getLessonsForSkill(skill.id);
@@ -35,9 +34,9 @@ export default function NodeDetails({ skill, completedLessonIds, quests, onClose
             return (
               <div className="node-details__topic" key={lesson.id}>
                 {done ? (
-                  <CheckCircle2 size={16} color="var(--success)" />
+                  <CheckCircle2 size={16} color="#2dd4a7" />
                 ) : (
-                  <Circle size={16} color="var(--text-muted)" />
+                  <Circle size={16} color="#656d92" />
                 )}
                 <span className={done ? 'text-secondary' : ''}>{lesson.title}</span>
               </div>
@@ -56,7 +55,7 @@ export default function NodeDetails({ skill, completedLessonIds, quests, onClose
           fullWidth
           onClick={() => {
             onClose();
-            navigate('/learn', { state: { skillId: skill.id } });
+            navigate('learn', { skillId: skill.id });
           }}
         >
           Continue Learning
